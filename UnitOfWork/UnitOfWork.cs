@@ -15,14 +15,9 @@ namespace TodoApi.UnitOfWork
         Task RollbackAsync();
     }
 
-    public class UnitOfWork : IUnitOfWork
+    public class UnitOfWork(TodoDbContext dbContext) : IUnitOfWork
     {
-        private readonly DbContext _dbContext;
-
-        public UnitOfWork(TodoDbContext dbContext)
-        {
-            _dbContext = dbContext;
-        }
+        private readonly DbContext _dbContext = dbContext;
 
         public void Commit()
             => _dbContext.SaveChanges();

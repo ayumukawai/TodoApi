@@ -12,18 +12,12 @@ public interface ITodoService
   Task DeleteAsync(int id);
 }
 
-public class TodoService : ITodoService
+public class TodoService(IRepository<TodoItem> repository, IUnitOfWork unitOfWork) : ITodoService
 {
-  private readonly IRepository<TodoItem> _repository;
-  private readonly IUnitOfWork _unitOfWork;
+  private readonly IRepository<TodoItem> _repository = repository;
+  private readonly IUnitOfWork _unitOfWork = unitOfWork;
 
-  public TodoService(IRepository<TodoItem> repository, IUnitOfWork unitOfWork)
-  {
-    _repository = repository;
-    _unitOfWork = unitOfWork;
-  }
-
-  public async Task<IEnumerable<TodoItem>> GetAllAsync()
+    public async Task<IEnumerable<TodoItem>> GetAllAsync()
   {
     return await _repository.GetAllAsync();
   }
