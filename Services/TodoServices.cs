@@ -2,7 +2,7 @@ using TodoApi.Models;
 using TodoApi.Repositories;
 using TodoApi.UnitOfWork;
 
-namespace ContosoPizza.Services;
+namespace TodoApi.Services;
 public interface ITodoService
 {
   Task<IEnumerable<TodoItem>> GetAllAsync();

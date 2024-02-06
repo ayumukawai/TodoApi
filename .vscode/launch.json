@@ -10,7 +10,7 @@
       "request": "launch",
       "preLaunchTask": "build",
       // ターゲット フレームワークを変更した場合は、プログラム パスを更新するようにしてください。
-      "program": "${workspaceFolder}/bin/Debug/net7.0/ContosoPizza.dll",
+      "program": "${workspaceFolder}/bin/Debug/net7.0/TodoApi.dll",
       "args": [],
       "cwd": "${workspaceFolder}",
       "stopAtEntry": false,
