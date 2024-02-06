@@ -11,4 +11,4 @@ dotnet run
 
 ビルドに成功したら、以下のURLにアクセスすることでOpenAPIを使用できます。
 
-(http://localhost:5088/swagger/index.html){:target="_blank"}
+[SwaggerUI](http://localhost:5088/swagger/index.html){:target="_blank"}
