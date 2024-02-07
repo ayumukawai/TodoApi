@@ -1,0 +1,10 @@
+.vscode/
+*.sln
+*.suo
+*.ntvs*
+*.njsproj
+*.sln.docstates
+
+# ビルドディレクトリ
+/bin/
+/obj/
