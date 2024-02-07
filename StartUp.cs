@@ -13,6 +13,15 @@ namespace YourNamespace
       services.AddControllers();
       services.AddDbContext<TodoDbContext>(opt =>
           opt.UseInMemoryDatabase("TodoList"));
+      services.AddCors(options =>
+    {
+      options.AddPolicy("AllowSpecificOrigin", builder =>
+      {
+        builder.WithOrigins("http://localhost:3000")
+                 .AllowAnyMethod()
+                 .AllowAnyHeader();
+      });
+    });
       services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
       services.AddScoped<IUnitOfWork, UnitOfWork>();
       services.AddScoped<ITodoService, TodoService>();
@@ -31,6 +40,7 @@ namespace YourNamespace
       app.UseHttpsRedirection();
       app.UseRouting();
       app.UseAuthorization();
+      app.UseCors("AllowSpecificOrigin");
       app.UseEndpoints(endpoints =>
       {
         endpoints.MapControllers();

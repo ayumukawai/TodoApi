@@ -16,6 +16,9 @@ public static class DbInitializer
     {
             new() { Name = "C# Study", IsComplete = false },
             new() { Name = "TypeScript Study", IsComplete = false },
+            new() { Name = "React Study", IsComplete = false },
+            new() { Name = ".NET Study", IsComplete = false },
+            new() { Name = "Next.js Study", IsComplete = false },
     };
 
     await context.TodoItems.AddRangeAsync(todos);
