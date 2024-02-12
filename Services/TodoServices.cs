@@ -17,7 +17,7 @@ public class TodoService(IRepository<TodoItem> repository, IUnitOfWork unitOfWor
   private readonly IRepository<TodoItem> _repository = repository;
   private readonly IUnitOfWork _unitOfWork = unitOfWork;
 
-    public async Task<IEnumerable<TodoItem>> GetAllAsync()
+  public async Task<IEnumerable<TodoItem>> GetAllAsync()
   {
     return await _repository.GetAllAsync();
   }
