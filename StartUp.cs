@@ -25,6 +25,7 @@ public class Startup
     services.AddScoped<IUserRepository, UserRepository>();
     services.AddScoped<IUnitOfWork, ProjectUnitOfWork>();
     services.AddScoped<ITodoService, TodoService>();
+    services.AddScoped<IUserService, UserService>();
     services.AddScoped<IAuthService, AuthService>();
     services.AddEndpointsApiExplorer();
     services.AddSwaggerGen();
