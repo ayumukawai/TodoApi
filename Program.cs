@@ -1,38 +1,35 @@
-
 using TodoApi.Data;
 using TodoApi.Models;
 
-namespace YourNamespace
+namespace TodoApi;
+public class Program
 {
-    public class Program
+    public static void Main(string[] args)
     {
-        public static void Main(string[] args)
+        var host = CreateHostBuilder(args).Build();
+
+        using (var scope = host.Services.CreateScope())
         {
-            var host = CreateHostBuilder(args).Build();
-
-            using (var scope = host.Services.CreateScope())
+            var services = scope.ServiceProvider;
+            try
             {
-                var services = scope.ServiceProvider;
-                try
-                {
-                    var context = services.GetRequiredService<TodoDbContext>();
-                    DbInitializer.InitializeAsync(context).Wait();
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("An error occurred while seeding the database.");
-                    Console.WriteLine(ex.Message);
-                }
+                var context = services.GetRequiredService<TodoDbContext>();
+                DbInitializer.InitializeAsync(context).Wait();
             }
-
-            host.Run();
+            catch (Exception ex)
+            {
+                Console.WriteLine("An error occurred while seeding the database.");
+                Console.WriteLine(ex.Message);
+            }
         }
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                });
+        host.Run();
     }
+
+    public static IHostBuilder CreateHostBuilder(string[] args) =>
+        Host.CreateDefaultBuilder(args)
+            .ConfigureWebHostDefaults(webBuilder =>
+            {
+                webBuilder.UseStartup<Startup>();
+            });
 }

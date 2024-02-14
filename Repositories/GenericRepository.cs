@@ -49,6 +49,5 @@ public class Repository<T> : IRepository<T> where T : class
     var entity = await _dbSet.FindAsync(id);
     ArgumentNullException.ThrowIfNull(entity);
     _dbSet.Remove(entity);
-
   }
 }

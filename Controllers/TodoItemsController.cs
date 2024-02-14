@@ -10,7 +10,7 @@ public class TodoItemsController(ITodoService todoService) : ControllerBase
 {
   private readonly ITodoService _todoService = todoService;
 
-    [HttpGet]
+  [HttpGet]
   public async Task<ActionResult<IEnumerable<TodoItem>>> Get()
   {
     var entities = await _todoService.GetAllAsync();

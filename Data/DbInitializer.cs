@@ -7,10 +7,13 @@ public static class DbInitializer
   {
     await context.Database.EnsureCreatedAsync();
 
-    if (context.TodoItems.Any())
+    var users = new User[]
     {
-      return;
-    }
+            new() {UserName = "田中太郎", Password = "hogehoge"},
+            new() {UserName = "山田花子", Password = "hugahuga"},
+    };
+    await context.Users.AddRangeAsync(users);
+    await context.SaveChangesAsync();
 
     var todos = new TodoItem[]
     {
@@ -20,7 +23,6 @@ public static class DbInitializer
             new() { Name = ".NET Study", IsComplete = false },
             new() { Name = "Next.js Study", IsComplete = false },
     };
-
     await context.TodoItems.AddRangeAsync(todos);
     await context.SaveChangesAsync();
   }
